@@ -51,18 +51,14 @@ img {
 	overflow: auto;
 	
 }
+
 #navigator {
 	position: relative;
-	padding:0 50px;
-	top: 0px;
+	padding: 0 50px;
+	top: 0;
 	left: 275px;
-	width:810px;
-	text-align: center;
+	width: 800px;
 }
-label {
-	font-size:60px;
-}
-
 
 .text-center { 
     text-align: center; 
