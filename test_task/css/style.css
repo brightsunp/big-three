@@ -46,6 +46,7 @@ img {
 
 #main_container {
 	position: relative;
+<<<<<<< HEAD
 	top: 300px;
 	height: 450px;
 	overflow: auto;
@@ -62,3 +63,26 @@ img {
 label {
 	font-size:60px;
 }
+=======
+	top: 220px;
+	height: 400px;
+	overflow: auto;
+	
+}
+
+.text-center { 
+    text-align: center; 
+  }
+
+.ajax {
+  	color: #fff;
+ }
+
+ /*button.btn {
+ 	color: #fff;
+ 	background-color: #4aaf51;
+ }*/
+ button.btn:hover {
+ 	opacity: 0.6;
+ }
+>>>>>>> origin/master
