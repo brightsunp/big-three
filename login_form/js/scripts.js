@@ -44,7 +44,8 @@ jQuery(document).ready(function() {
                 }
             }
             if (flag == 0) {
-                alert("Login Failed:\n\nUsername or Password is WRONG.");
+                //alert("Login Failed:\n\nUsername or Password is WRONG.");
+                $("#login-error").modal();
             } else {
                 window.open("test_task/test_task.html", "_self");
             }
