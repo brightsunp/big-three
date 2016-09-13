@@ -49,7 +49,23 @@ img {
 #main_container {
 	position: relative;
 	top: 220px;
-	height: 450px;
+	height: 400px;
 	overflow: auto;
 	
 }
+
+.text-center { 
+    text-align: center; 
+  }
+
+.ajax {
+  	color: #fff;
+ }
+
+ /*button.btn {
+ 	color: #fff;
+ 	background-color: #4aaf51;
+ }*/
+ button.btn:hover {
+ 	opacity: 0.6;
+ }
