@@ -11,7 +11,7 @@ header {
 }
 
 #links_container {
-	padding: 5px;
+	padding: 10px;
 	text-align: right;
 }
 
@@ -38,6 +38,7 @@ img {
 }
 
 .blur {
+	background-color: #999;
 	-webkit-filter: blur(5px);
 	-moz-filter: blur(5px);
 	-ms-filter: blur(5px);
@@ -62,6 +63,10 @@ img {
 	top: 0;
 	left: 275px;
 	width: 800px;
+}
+
+#label {	
+	margin: 5px 10px;
 }
 
 .text-center { 
