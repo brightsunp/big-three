@@ -52,7 +52,7 @@ img {
 	overflow: auto;
 }
 
-#cloud_container, #cases_container, #run_container {
+#cloud_container {
 	position: relative;
 	top: 50px;
 }
@@ -74,13 +74,24 @@ img {
   }
 
 .ajax {
+	position: relative;
   	color: #fff;
  }
 
- /*button.btn {
- 	color: #fff;
- 	background-color: #4aaf51;
- }*/
  button.btn:hover {
  	opacity: 0.6;
+ }
+
+ #cases_container {
+ 	position: absolute;
+ 	top: 0;
+ 	left: 0;
+ 	right: 0;
+ 	border: 1px solid #fff;
+ }
+
+ .caseList {
+ 	position: relative;
+ 	font-size: 20px;
+ 	color: #fff;
  }

@@ -1,0 +1,14 @@
+{
+	"case1": {
+		"caseName": "OPNFV_001"
+	},
+	"case2": {
+		"caseName": "OPNFV_002"
+	},
+	"case3": {
+		"caseName": "OPNFV_003"
+	},
+	"case4": {
+		"caseName": "OPNFV_004"
+	}
+}
