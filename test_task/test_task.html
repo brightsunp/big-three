@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app>
+<html lang="en" ng-app="testTask">
 <head>
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,29 +27,29 @@
 		</div>
 
 		<div id="img_container">
-			<img src="img/cloud.png" class="img-rounded" />
-			<img src="img/right.png" class="img-rounded blur" />
-			<img src="img/running.png" class="img-rounded blur" />
-			<img src="img/output.png" class="img-rounded blur" />
+			<img src="img/cloud.png" id="cloud_png" class="img-rounded" />
+			<img src="img/right.png" id="right_png" class="img-rounded blur" />
+			<img src="img/running.png" id="run_png" class="img-rounded blur" />
+			<img src="img/output.png" id="output_png" class="img-rounded blur" />
 		</div>
 
 		<div id="navigator">
 			<div class="sui-steps-round steps-round-auto steps-4">
-			  <div class="finished">
+			  <div id="cases_nav" class="todo">
 			    <div class="wrap">
 			      <div class="round">1</div>
 			      <div class="bar"></div>
 			    </div>
 			    <label id="label">select case</label>
 			  </div>
-			  <div class="todo">
+			  <div id="run_nav" class="todo">
 			    <div class="wrap">
 			      <div class="round">2</div>
 			      <div class="bar"></div>
 			    </div>
 			    <label id="label">run</label>
 			  </div>
-			  <div class="todo">
+			  <div id="output_nav" class="todo">
 			    <div class="wrap">
 			      <div class="round">3</div>
 			      <div class="bar"></div>
@@ -68,14 +68,13 @@
 
 
 	<div id="main_container">		
-		<div id="cloud_container">	      	
+		<div id="cloud_container" ng-controller="CloudCtrl">	      	
 	      	<div class="row">
 	        	<div class="col-xs-6 col-md-offset-3">	        
 	          		<div class="ajax" style="position: relative; overflow: hidden">
 	            		<h3>Load Cloud</h3><br />
-	            		<div class="text-center">
-	            			<button class="demo btn btn-primary btn-lg btn-block" data-toggle="modal">Load</button>
-	            		</div>
+	            		<button class="demo btn btn-primary btn-lg btn-block text-center" data-toggle="modal">Load
+	            		</button>
 	         		</div>
 	        	</div>
 	    	</div>
@@ -90,8 +89,14 @@
 			  	</div>
 			  	<div class="modal-footer">
 			    	<button type="button" data-dismiss="modal" class="btn">Close</button>
-			    	<button type="button" class="btn btn-primary search">Search</button>
+			    	<button type="button" class="btn btn-primary search" ng-click="searchCases()">Search</button>
 			  	</div>
+			</div>
+		</div>
+
+		<div id="cases_container" ng-controller="CasesCtrl">
+			<div ng-repeat="case in cases">
+				{{case.case1}}
 			</div>
 		</div>
 		

@@ -56,8 +56,3 @@ $('.ajax .demo').on('click', function(){
 //         '</div>');
 //   }, 1000);
 // });
-$modal.on('click', '.search', function(){
-  $modal.modal('hide');
-  //add search api & go to next step ui
-  
-  });

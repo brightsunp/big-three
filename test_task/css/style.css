@@ -52,7 +52,7 @@ img {
 	overflow: auto;
 }
 
-#cloud_container {
+#cloud_container, #cases_container, #run_container {
 	position: relative;
 	top: 50px;
 }
