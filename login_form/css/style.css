@@ -37,6 +37,17 @@ img { max-width: 100%; }
 ::selection { background: #4aaf51; color: #fff; text-shadow: none; }
 
 
+.align{
+	vertical-align:middle; 
+}
+#headline{
+	font-size: 38px;
+	padding:30px;
+}
+
+
+
+
 .btn-link-1 {
 	display: inline-block;
 	height: 50px;
@@ -188,4 +199,5 @@ img { max-width: 100%; }
 	h1, h2 { font-size: 32px; }
 
 }
+
 
