@@ -67,7 +67,7 @@
 	</header>
 
 
-	<div id="main_container">		
+	<div id="main_container" ng-controller="MainCtrl">		
 		<div id="cloud_container" ng-controller="CloudCtrl">	      	
 	      	<div class="row">
 	        	<div class="col-xs-6 col-md-offset-3">	        
@@ -94,14 +94,20 @@
 			</div>
 		</div>
 
-		<div id="cases_container" ng-controller="CasesCtrl" ng-show="flag">
-			<ul>
-				<li class="caseList" ng-repeat="case in cases">
-					<label>
-						<input type="checkbox" ng-model="selected" />{{case.caseName}}
-					</label>
-				</li>
-			</ul>
+		<div id="cases_container" ng-controller="CasesCtrl" ng-show="casesShow" ng-init="casesShow=0">
+			<form ng-submit="submit()">
+				<ul>
+					<li ng-repeat="case in cases">
+						<input type="checkbox" />{{case.caseName}}
+					</li>
+				</ul>
+				<br /><br /><br />
+				<button type="submit" class="demo btn btn-primary btn-lg btn-block text-center">Submit</button>
+			</form>
+		</div>
+
+		<div id="history_container" ng-controller="HistoryCtrl" ng-show="histShow" ng-init="histShow=0">
+			<h3 style="color: #fff;">Here is history.</h3>
 		</div>
 		
 	</div>

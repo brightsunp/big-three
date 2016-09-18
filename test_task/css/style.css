@@ -84,14 +84,22 @@ img {
 
  #cases_container {
  	position: absolute;
- 	top: 0;
+ 	top: 50px;
+ 	left: 400px;
+ 	right: 400px;
+ }
+
+ ul {
+ 	list-style: none;
+ 	font-size: 20px;
+ 	color: #fff;
+ }
+
+ #history_container {
+ 	position: absolute;
+ 	top: 50px;
  	left: 0;
  	right: 0;
  	border: 1px solid #fff;
  }
-
- .caseList {
- 	position: relative;
- 	font-size: 20px;
- 	color: #fff;
- }
+ 
