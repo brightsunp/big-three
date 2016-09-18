@@ -9,11 +9,15 @@ app.controller('MainCtrl', function($scope) {
 	});
 
 }).controller('CloudCtrl', function($scope) {
-	$scope.searchCases = function() {
+	var cloudChange = function() {
 		$modal.modal('hide');
 		$('#cloud_container').hide();
 		$('#right_png').removeClass('blur');
 		$('#cases_nav').removeClass('todo').addClass('finished');
+	};
+
+	$scope.searchCases = function() {
+		cloudChange();
 		$scope.$emit("CasesShowChange", 1);
 	};
 
@@ -26,10 +30,14 @@ app.controller('MainCtrl', function($scope) {
 		$scope.cases = data;
 	});
 
-	$scope.submit = function() {
+	var casesChange = function() {
 		$('#cases_container').hide();
 		$('#run_png').removeClass('blur');
 		$('#run_nav').removeClass('todo').addClass('finished');
+	};
+
+	$scope.submit = function() {
+		casesChange();
 		$scope.$emit("HistShowChange", 1);
 		
 	};
