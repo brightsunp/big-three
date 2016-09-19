@@ -32,6 +32,27 @@ app.controller('MainCtrl', function($scope) {
 		alert('a $http request error occurred.');
 	});
 
+	var selectedList = [];
+
+	$scope.updateSelectedList = function($event) {
+		var ifChecked = $event.target.checked ? true: false;
+		var caseName = $event.target.id;
+		if (ifChecked) {
+			selectedList.push(caseName);
+		} else {
+			var idx = selectedList.indexOf(caseName);
+			selectedList.splice(idx, 1);
+		}
+	};
+
+	$scope.showSelectedList = function() {
+		var date = new Date();
+		var time = date.toLocaleString();
+		for (var i=0; i<selectedList.length; i++) {
+			console.log(selectedList[i] + '  ' + time);
+		}
+	};
+
 	var casesChange = function() {
 		$('#cases_container').hide();
 		$('#run_png').removeClass('blur');

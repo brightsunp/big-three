@@ -99,11 +99,12 @@
 				<ul>
 					<li ng-repeat="case in cases">
 					  	<div class="checkboxFour">
-							<input type="checkbox" value="1" id="checkboxFourInput" name="" />
-							<label for="checkboxFourInput"></label>{{case.caseName}}
+							<input type="checkbox" id={{case.caseName}} ng-click="updateSelectedList($event)" />
+							<label for={{case.caseName}}></label>{{case.caseName}}
 						</div>
 					</li>
 				</ul>
+				<button ng-click="showSelectedList()">test</button>
 				<br /><br /><br />
 				<button type="submit" class="demo btn btn-primary btn-lg btn-block text-center">Submit</button>
 			</form>

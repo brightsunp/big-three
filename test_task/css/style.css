@@ -142,7 +142,7 @@ input[type=checkbox] {
 	box-shadow:inset 0px 1px 3px rgba(0,0,0,0.5);
 }
 
-.checkboxFour input[type=checkbox]:checked + label {
+.checkboxFour input:checked + label {
 	background: #28a3ef;
 }
 
