@@ -45,13 +45,11 @@ app.controller('MainCtrl', function($scope) {
 		}
 	};
 
-	$scope.showSelectedList = function() {
-		var date = new Date();
-		var time = date.toLocaleString();
-		for (var i=0; i<selectedList.length; i++) {
-			console.log(selectedList[i] + '  ' + time);
-		}
-	};
+	var postData = {
+		cmd: 'start',
+		opts: {},
+		args: selectedList
+	}
 
 	var casesChange = function() {
 		$('#cases_container').hide();
@@ -62,10 +60,18 @@ app.controller('MainCtrl', function($scope) {
 	$scope.submit = function() {
 		casesChange();
 		$scope.$emit("HistShowChange", 1);
-		
+
+		$http.post('/api/v3/yardstick/tasks/task', postData).success(function() {
+			// return taskId;
+		}).error(function() {
+			// error info;
+		});		
 	};
 }).controller('HistoryCtrl', function($scope) {
 	$scope.$on("HistShowChangeFromMain", function(event, msg) {
 		$scope.histShow = msg;
 	});
+
+	var date = new Date();
+	var time = date.toLocaleString();
 });
