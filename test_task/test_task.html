@@ -98,7 +98,10 @@
 			<form ng-submit="submit()">
 				<ul>
 					<li ng-repeat="case in cases">
-						<input type="checkbox" />{{case.caseName}}
+					  	<div class="checkboxFour">
+							<input type="checkbox" value="1" id="checkboxFourInput" name="" />
+							<label for="checkboxFourInput"></label>{{case.caseName}}
+						</div>
 					</li>
 				</ul>
 				<br /><br /><br />
