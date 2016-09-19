@@ -26,8 +26,10 @@ app.controller('MainCtrl', function($scope) {
 		$scope.casesShow = msg;
 	});	
 	// get(url) url: route for .json file
-	$http.get('cases2.json').success(function(data) {
+	$http.get('json/cases2.json').success(function(data) {
 		$scope.cases = data;
+	}).error(function() {
+		alert('a $http request error occurred.');
 	});
 
 	var casesChange = function() {
