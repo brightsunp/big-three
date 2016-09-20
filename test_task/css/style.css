@@ -48,8 +48,6 @@ img {
 #main_container {
 	position: relative;
 	top: 250px;
-	height: 450px;
-	overflow: auto;
 }
 
 #cloud_container {
@@ -84,7 +82,7 @@ img {
 
  #cases_container {
  	position: absolute;
- 	top: 50px;
+ 	top: 0;
  	left: 400px;
  	right: 400px;
  }
@@ -149,5 +147,4 @@ input[type=checkbox] {
  	top: 50px;
  	left: 0;
  	right: 0;
- 	border: 1px solid #fff;
  }
