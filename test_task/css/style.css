@@ -144,7 +144,17 @@ input[type=checkbox] {
 
 #history_container {
  	position: absolute;
- 	top: 50px;
- 	left: 0;
+ 	top: 30px;
+ 	width:800px;
+ 	height:300px;
+ 	border-radius:10px;
+ 	left: 285px;
  	right: 0;
+ 	background-color: #F5F5F5;
  }
+ table{
+ 	border-collapse: collapse;
+ }
+ th, td {
+  padding: 0.5em 5.5em;
+} 
