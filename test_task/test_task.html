@@ -106,7 +106,7 @@
 					</li>
 				</ul>
 				<br /><br /><br />
-				<button type="submit" class="demo btn btn-primary btn-lg btn-block text-center">Submit</button>
+				<button ng-click="showSelectedList()" type="submit" class="demo btn btn-primary btn-lg btn-block text-center">Submit</button>
 			</form>
 		</div>
 
@@ -117,13 +117,36 @@
 			  	<th>Number</th>
 			    <th>Testing Case</th>
 			    <th>Status</th>
+			    <th>Time</th>
 			    <th>More Details</th>
 			  </tr>
 			  <tr>
-			  	<td>1</td>
-			    <td>OPNFV_001</td>
-			    <td>running</td>
-			    <td><a href="#">Check</a></td>
+			  	<td id="number0"></td>
+			    <td id="case0"></td>
+			    <td id="status0"></td>
+			    <td id="time0"></td>
+			    <td><a id="check0" href="#"></a></td>
+			  </tr>
+			  <tr>
+			  	<td id="number1"></td>
+			    <td id="case1"></td>
+			    <td id="status1"></td>
+			    <td id="time1"></td>
+			    <td><a id="check1" href="#"></a></td>
+			  </tr>
+			  <tr>
+			  	<td id="number2"></td>
+			    <td id="case2"></td>
+			    <td id="status2"></td>
+			    <td id="time2"></td>
+			    <td><a id="check2" href="#"></a></td>
+			  </tr>
+			  <tr>
+			  	<td id="number3"></td>
+			    <td id="case3"></td>
+			    <td id="status3"></td>
+			    <td id="time3"></td>
+			    <td><a id="check3" href="#"></a></td>
 			  </tr>
 			</table>
 		</div>

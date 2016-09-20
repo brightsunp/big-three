@@ -150,11 +150,12 @@ input[type=checkbox] {
  	border-radius:10px;
  	left: 285px;
  	right: 0;
+ 	padding:0 0 0 30px;
  	background-color: #F5F5F5;
  }
  table{
  	border-collapse: collapse;
  }
  th, td {
-  padding: 0.5em 5.5em;
-} 
+  	padding: 0.5em 3em;
+}

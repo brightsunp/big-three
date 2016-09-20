@@ -45,6 +45,35 @@ app.controller('MainCtrl', function($scope) {
 		}
 	};
 
+	$scope.showSelectedList = function() {
+		var date = new Date();
+		var time = date.toLocaleString();
+		for (var i=0; i<selectedList.length; i++) {
+			x="case";
+			y=i;
+			var temp = x+y;
+			document.getElementById(temp).innerHTML = selectedList[i];
+			x="number";
+			y=i;
+			var temp = x+y;
+			document.getElementById(temp).innerHTML = i+1;
+			x="status";
+			y=i;
+			var temp = x+y;
+			document.getElementById(temp).innerHTML = "running";
+			x="time";
+			y=i;
+			var temp = x+y;
+			document.getElementById(temp).innerHTML = time;
+			x="check";
+			y=i;
+			var temp = x+y;
+			document.getElementById(temp).innerHTML = "check";
+
+			console.log(selectedList[i] + '  ' + time);
+		}
+	};
+
 	var postData = {
 		cmd: 'start',
 		opts: {},
