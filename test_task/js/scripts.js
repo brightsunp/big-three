@@ -48,7 +48,13 @@ app.controller('MainCtrl', function($scope) {
 	$scope.showSelectedList = function() {
 		var date = new Date();
 		var time = date.toLocaleString();
-		for (var i=0; i<selectedList.length; i++) {
+		for (var i = 1; i <= selectedList.length; i++) {
+			$('#number' + i).html(i);
+			$('#case' + i).html(selectedList[i - 1]);
+			$('#status' + i).html('running');
+			$('#time' + i).html(time);
+			$('#check' + i).html('check');
+			/*
 			x="case";
 			y=i;
 			var temp = x+y;
@@ -69,8 +75,7 @@ app.controller('MainCtrl', function($scope) {
 			y=i;
 			var temp = x+y;
 			document.getElementById(temp).innerHTML = "check";
-
-			console.log(selectedList[i] + '  ' + time);
+			*/
 		}
 	};
 
@@ -101,6 +106,4 @@ app.controller('MainCtrl', function($scope) {
 		$scope.histShow = msg;
 	});
 
-	var date = new Date();
-	var time = date.toLocaleString();
 });
