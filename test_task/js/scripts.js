@@ -1,11 +1,13 @@
 var app = angular.module('testTask', []);
-
 app.controller('MainCtrl', function($scope) {
 	$scope.$on("CasesShowChange", function(event, msg) {		
 		$scope.$broadcast("CasesShowChangeFromMain", msg);
 	});
 	$scope.$on("HistShowChange", function(event, msg) {
 		$scope.$broadcast("HistShowChangeFromMain", msg);
+	});
+	$scope.$on("OutputShowChange", function(event, msg) {
+	$scope.$broadcast("OutputShowChangeFromMain", msg);
 	});
 
 }).controller('CloudCtrl', function($scope) {
@@ -90,7 +92,10 @@ app.controller('MainCtrl', function($scope) {
 		casesChange();
 		$scope.$emit("HistShowChange", 1);
 
-		$http.post('/api/v3/yardstick/tasks/task', postData).success(function() {
+		console.log('data:' + postData['cmd'] + postData['args'])
+		$http.post('http://192.168.23.2:8888/api/v3/yardstick/tasks/task', postData).success(function(result) {
+			console.log(result['task_id'])
+			url = 'http://192.168.23.2:8888/api/v3/yardstick/testresults?task_id='+result['task_id']+'&measurement='+postData['args'];
 			// return taskId;
 		}).error(function() {
 			// error info;
@@ -101,6 +106,21 @@ app.controller('MainCtrl', function($scope) {
 		$scope.histShow = msg;
 	});
 
-	var date = new Date();
-	var time = date.toLocaleString();
+	$scope.check = function(){
+		$('#history_container').hide();
+		$('#output_png').removeClass('blur');
+		$('#output_nav').removeClass('todo').addClass('finished');
+		$scope.$emit("OutputShowChange", 1);
+		tempval = $http.get(url);
+		//if(tempval['status'])
+
+
+
+	};
+}).controller('OutputCtrl', function($scope) {
+$scope.$on("OutputShowChangeFromMain", function(event, msg) {
+	$scope.outputShow = msg;
+});
+
+
 });

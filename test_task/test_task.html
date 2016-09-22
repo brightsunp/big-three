@@ -125,7 +125,7 @@
 			    <td id="case0"></td>
 			    <td id="status0"></td>
 			    <td id="time0"></td>
-			    <td><a id="check0" href="#"></a></td>
+			    <td><a id="check0" href="#" ng-click="check()"></a></td>
 			  </tr>
 			  <tr>
 			  	<td id="number1"></td>
@@ -150,7 +150,12 @@
 			  </tr>
 			</table>
 		</div>
-		
+
+		<div id="output_container" ng-controller="OutputCtrl" ng-show="outputShow" ng-init="outputShow=0">
+			<h3 style="color: #000;">Output result</h3>
+
+		</div>
+
 	</div>
 
 	<!--script src="js/jquery.3.1.0.min.js"></script-->
