@@ -125,35 +125,46 @@
 			    <td id="case1"></td>
 			    <td id="status1"></td>
 			    <td id="time1"></td>
-			    <td><a id="check1" href="#" ng-click="check()"></a></td>
+			    <td><a id="check1" href="javascript:;" ng-click="check()"></a></td>
 			  </tr>
 			  <tr>
 			  	<td id="number2"></td>
 			    <td id="case2"></td>
 			    <td id="status2"></td>
 			    <td id="time2"></td>
-			    <td><a id="check2" href="#"></a></td>
+			    <td><a id="check2" href="javascript:;" ng-click="check()"></a></td>
 			  </tr>
 			  <tr>
 			  	<td id="number3"></td>
 			    <td id="case3"></td>
 			    <td id="status3"></td>
 			    <td id="time3"></td>
-			    <td><a id="check3" href="#"></a></td>
+			    <td><a id="check3" href="javascript:;" ng-click="check()"></a></td>
 			  </tr>
 			  <tr>
 			  	<td id="number4"></td>
 			    <td id="case4"></td>
 			    <td id="status4"></td>
 			    <td id="time4"></td>
-			    <td><a id="check4" href="#"></a></td>
+			    <td><a id="check4" href="javascript:;" ng-click="check()"></a></td>
 			  </tr>
 			</table>
 		</div>
 
-		<div id="output_container" ng-controller="OutputCtrl" ng-show="outputShow" ng-init="outputShow=0">
-			<h3 style="color: #000;">Output result</h3>
-
+		<div id="output_container" ng-controller="OutputCtrl" ng-show="outputShow" ng-init="outputShow=0" ng-model="result">
+			<h3 style="color: #000;">Output: {{result.name}}</h3>
+			<table>
+				<tr ng-repeat="column in result.columns">
+					<th>{{column}}</th>
+				</tr>
+				<tr ng-repeat="value in result.values[0] track by $index">
+					<td>{{value}}</td>
+				</tr>
+				<tr ng-repeat="value in result.values[1] track by $index">
+					<td>{{value}}</td>
+				</tr>
+			</table>
+			
 
 		</div>
 

@@ -10,6 +10,9 @@ app.controller('MainCtrl', function($scope) {
 	$scope.$on("OutputShowChange", function(event, msg) {
 		$scope.$broadcast("OutputShowChangeFromMain", msg);
 	});
+	$scope.$on("ResultChange", function(event, msg) {
+		$scope.$broadcast("ResultChangeFromMain", msg);
+	});
 
 }).controller('CloudCtrl', function($scope) {
 	var cloudChange = function() {
@@ -77,33 +80,73 @@ app.controller('MainCtrl', function($scope) {
 		$scope.$emit("HistShowChange", 1);
 
 		console.log('data:' + postData['cmd'] + postData['args'])
+		/*
 		$http.post('http://192.168.23.2:8888/api/v3/yardstick/tasks/task', postData).success(function(result) {
 			console.log(result['task_id'])
 			url = 'http://192.168.23.2:8888/api/v3/yardstick/testresults?task_id='+result['task_id']+'&measurement='+postData['args'];
 			// return taskId;
 		}).error(function() {
 			// error info;
-		});		
+		});	
+		*/
 	};
 
-}).controller('HistoryCtrl', function($scope) {
+}).controller('HistoryCtrl', function($scope, $http) {
 	$scope.$on("HistShowChangeFromMain", function(event, msg) {
 		$scope.histShow = msg;
 	});
+
+	var syntaxHighlight = function(json) {
+		if (typeof json != 'string') {
+			json = JSON.stringify(json, undefined, 2);
+		}
+		json = json.replace(/&/g, '&').replace(/</g, '<').replace(/>/g, '>');
+		return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+			var cls = 'number';
+			if (/^"/.test(match)) {
+				if (/:$/.test(match)) {
+					cls = 'key';
+				} else {
+					cls = 'string';
+				} 
+			} else if (/true|false/.test(match)) {
+				cls = 'boolean';
+			} else if (/null/.test(match)) {
+				cls = 'null';
+			}
+			return '<span class="' + cls + '">' + match + '</span>';
+		});
+	};
 
 	$scope.check = function(){
 		$('#history_container').hide();
 		$('#output_png').removeClass('blur');
 		$('#output_nav').removeClass('todo').addClass('finished');
 		$scope.$emit("OutputShowChange", 1);
-		tempval = $http.get(url);
-		//if(tempval['status'])
 
-
+		// tempval = $http.get(url);
+		// if(tempval['status'])
+		$http.get('json/resulttest.json').success(function(data) {
+			$scope.jsonResult = data.result.results[0].series[0];
+			$scope.$emit("ResultChange", $scope.jsonResult);
+		}).error(function() {
+			alert('a $http request error occurred.');
+		});
 	};
+
 }).controller('OutputCtrl', function($scope) {
 	$scope.$on("OutputShowChangeFromMain", function(event, msg) {
 		$scope.outputShow = msg;
 	});
+	$scope.$on("ResultChangeFromMain", function(event, msg) {
+		$scope.result = msg;
+	});
+
+	/*
+	for (var i = 0; i < $scope.result.values.length; i++) {
+		$scope.value = [];
+		$scope.value[i] = $scope.result.values[i];
+	}
+	*/
 
 });
