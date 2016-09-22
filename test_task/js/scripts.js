@@ -91,10 +91,31 @@ app.controller('MainCtrl', function($scope) {
 		*/
 	};
 
+<<<<<<< HEAD
 }).controller('HistoryCtrl', function($scope, $http) {
+=======
+}).controller('HistoryCtrl', function($http, $scope) {
+>>>>>>> origin/master
 	$scope.$on("HistShowChangeFromMain", function(event, msg) {
 		$scope.histShow = msg;
 	});
+	var timer1 = setInterval(function(){
+	if($scope.histShow)
+	{
+		//update the status
+		$http.get('json/resulttest.json').success(function(data)
+		{
+			
+			if(data['status']==1)
+			{
+				$('#status1').html('finished');
+
+			}
+		}).error(function() {
+		alert('a $http request error occurred.');
+	});
+	}
+	},30000);
 
 	var syntaxHighlight = function(json) {
 		if (typeof json != 'string') {
