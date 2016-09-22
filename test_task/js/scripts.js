@@ -1,4 +1,5 @@
 var app = angular.module('testTask', []);
+
 app.controller('MainCtrl', function($scope) {
 	$scope.$on("CasesShowChange", function(event, msg) {		
 		$scope.$broadcast("CasesShowChangeFromMain", msg);
@@ -7,7 +8,7 @@ app.controller('MainCtrl', function($scope) {
 		$scope.$broadcast("HistShowChangeFromMain", msg);
 	});
 	$scope.$on("OutputShowChange", function(event, msg) {
-	$scope.$broadcast("OutputShowChangeFromMain", msg);
+		$scope.$broadcast("OutputShowChangeFromMain", msg);
 	});
 
 }).controller('CloudCtrl', function($scope) {
@@ -56,28 +57,6 @@ app.controller('MainCtrl', function($scope) {
 			$('#status' + i).html('running');
 			$('#time' + i).html(time);
 			$('#check' + i).html('check');
-			/*
-			x="case";
-			y=i;
-			var temp = x+y;
-			document.getElementById(temp).innerHTML = selectedList[i];
-			x="number";
-			y=i;
-			var temp = x+y;
-			document.getElementById(temp).innerHTML = i+1;
-			x="status";
-			y=i;
-			var temp = x+y;
-			document.getElementById(temp).innerHTML = "running";
-			x="time";
-			y=i;
-			var temp = x+y;
-			document.getElementById(temp).innerHTML = time;
-			x="check";
-			y=i;
-			var temp = x+y;
-			document.getElementById(temp).innerHTML = "check";
-			*/
 		}
 	};
 
@@ -106,11 +85,11 @@ app.controller('MainCtrl', function($scope) {
 			// error info;
 		});		
 	};
+
 }).controller('HistoryCtrl', function($scope) {
 	$scope.$on("HistShowChangeFromMain", function(event, msg) {
 		$scope.histShow = msg;
 	});
-
 
 	$scope.check = function(){
 		$('#history_container').hide();
@@ -121,11 +100,10 @@ app.controller('MainCtrl', function($scope) {
 		//if(tempval['status'])
 
 
-
 	};
 }).controller('OutputCtrl', function($scope) {
-$scope.$on("OutputShowChangeFromMain", function(event, msg) {
-	$scope.outputShow = msg;
-});
+	$scope.$on("OutputShowChangeFromMain", function(event, msg) {
+		$scope.outputShow = msg;
+	});
 
 });
