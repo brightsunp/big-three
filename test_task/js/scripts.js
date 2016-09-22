@@ -80,7 +80,7 @@ app.controller('MainCtrl', function($scope) {
 		$scope.$emit("HistShowChange", 1);
 
 		console.log('data:' + postData['cmd'] + postData['args'])
-		/*
+		
 		$http.post('http://192.168.23.2:8888/api/v3/yardstick/tasks/task', postData).success(function(result) {
 			console.log(result['task_id'])
 			url = 'http://192.168.23.2:8888/api/v3/yardstick/testresults?task_id='+result['task_id']+'&measurement='+postData['args'];
@@ -88,7 +88,7 @@ app.controller('MainCtrl', function($scope) {
 		}).error(function() {
 			// error info;
 		});	
-		*/
+		
 	};
 
 }).controller('HistoryCtrl', function($scope, $http) {
@@ -99,18 +99,22 @@ app.controller('MainCtrl', function($scope) {
 	var timer1 = setInterval(function() {
 		if($scope.histShow) {
 			//update the status
-			$http.get('json/resulttest.json').success(function(data)
+			$http.get(url).success(function(data)
 			{
 				
 				if(data['status']==1)
 				{
 					$('#status1').html('finished');
 				}
+				else if(data['status']==2)
+				{
+					$('#status1').html('error');
+				}
 			}).error(function() {
 				alert('a $http request error occurred.');
 			});
 		}
-	}, 30000);
+	}, 20000);
 
 	$scope.check = function(){
 		$('#history_container').hide();
@@ -120,7 +124,7 @@ app.controller('MainCtrl', function($scope) {
 
 		// tempval = $http.get(url);
 		// if(tempval['status'])
-		$http.get('json/resulttest.json').success(function(data) {
+		$http.get(url).success(function(data) {
 			$scope.jsonResult = data.result.results[0].series[0];
 			$scope.$emit("ResultChange", $scope.jsonResult);
 		}).error(function() {

@@ -154,14 +154,32 @@
 		<div id="output_container" ng-controller="OutputCtrl" ng-show="outputShow" ng-init="outputShow=0" ng-model="result">
 			<h3 style="color: #000;">Output: {{result.name}}</h3>
 			<table>
-				<tr ng-repeat="column in result.columns">
-					<th>{{column}}</th>
+				<tr>
+					<th ng-repeat="column in result.columns">{{column}}</th>	
 				</tr>
-				<tr ng-repeat="value in result.values[0] track by $index">
-					<td>{{value}}</td>
+				<tr>
+					<td ng-repeat="value in result.values[0] track by $index">{{value}}</td>
 				</tr>
-				<tr ng-repeat="value in result.values[1] track by $index">
-					<td>{{value}}</td>
+				<tr>
+					<td ng-repeat="value in result.values[1] track by $index">{{value}}</td>
+				</tr>
+				<tr>
+					<td ng-repeat="value in result.values[2] track by $index">{{value}}</td>
+				</tr>
+				<tr>
+					<td ng-repeat="value in result.values[3] track by $index">{{value}}</td>
+				</tr>
+				<tr>
+					<td ng-repeat="value in result.values[4] track by $index">{{value}}</td>
+				</tr>
+				<tr>
+					<td ng-repeat="value in result.values[5] track by $index">{{value}}</td>
+				</tr>
+				<tr>
+					<td ng-repeat="value in result.values[6] track by $index">{{value}}</td>
+				</tr>
+				<tr>
+					<td ng-repeat="value in result.values[7] track by $index">{{value}}</td>
 				</tr>
 			</table>
 			
