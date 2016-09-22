@@ -157,7 +157,8 @@ input[type=checkbox] {
  	border-collapse: collapse;
  }
  th, td {
-  	padding: 0.5em 3em;
+  	padding: 0.5em 2em;
+  	font-size: 14px;
 }
 #output_container{
 	position: absolute;

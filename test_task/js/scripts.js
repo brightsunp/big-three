@@ -86,10 +86,27 @@ app.controller('MainCtrl', function($scope) {
 		});		
 	};
 
-}).controller('HistoryCtrl', function($scope) {
+}).controller('HistoryCtrl', function($http, $scope) {
 	$scope.$on("HistShowChangeFromMain", function(event, msg) {
 		$scope.histShow = msg;
 	});
+	var timer1 = setInterval(function(){
+	if($scope.histShow)
+	{
+		//update the status
+		$http.get('json/resulttest.json').success(function(data)
+		{
+			
+			if(data['status']==1)
+			{
+				$('#status1').html('finished');
+
+			}
+		}).error(function() {
+		alert('a $http request error occurred.');
+	});
+	}
+	},30000);
 
 	$scope.check = function(){
 		$('#history_container').hide();
