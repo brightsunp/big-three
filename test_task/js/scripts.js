@@ -91,53 +91,26 @@ app.controller('MainCtrl', function($scope) {
 		*/
 	};
 
-<<<<<<< HEAD
 }).controller('HistoryCtrl', function($scope, $http) {
-=======
-}).controller('HistoryCtrl', function($http, $scope) {
->>>>>>> origin/master
 	$scope.$on("HistShowChangeFromMain", function(event, msg) {
 		$scope.histShow = msg;
 	});
-	var timer1 = setInterval(function(){
-	if($scope.histShow)
-	{
-		//update the status
-		$http.get('json/resulttest.json').success(function(data)
-		{
-			
-			if(data['status']==1)
+
+	var timer1 = setInterval(function() {
+		if($scope.histShow) {
+			//update the status
+			$http.get('json/resulttest.json').success(function(data)
 			{
-				$('#status1').html('finished');
-
-			}
-		}).error(function() {
-		alert('a $http request error occurred.');
-	});
-	}
-	},30000);
-
-	var syntaxHighlight = function(json) {
-		if (typeof json != 'string') {
-			json = JSON.stringify(json, undefined, 2);
+				
+				if(data['status']==1)
+				{
+					$('#status1').html('finished');
+				}
+			}).error(function() {
+				alert('a $http request error occurred.');
+			});
 		}
-		json = json.replace(/&/g, '&').replace(/</g, '<').replace(/>/g, '>');
-		return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
-			var cls = 'number';
-			if (/^"/.test(match)) {
-				if (/:$/.test(match)) {
-					cls = 'key';
-				} else {
-					cls = 'string';
-				} 
-			} else if (/true|false/.test(match)) {
-				cls = 'boolean';
-			} else if (/null/.test(match)) {
-				cls = 'null';
-			}
-			return '<span class="' + cls + '">' + match + '</span>';
-		});
-	};
+	}, 30000);
 
 	$scope.check = function(){
 		$('#history_container').hide();
