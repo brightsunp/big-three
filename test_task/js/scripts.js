@@ -35,7 +35,7 @@ app.controller('MainCtrl', function($scope) {
 	$http.get('json/cases2.json').success(function(data) {
 		$scope.cases = data;
 	}).error(function() {
-		alert('a $http request error occurred.');
+		console.log('a $http request error occurred.');
 	});
 
 	var selectedList = [];
@@ -57,7 +57,7 @@ app.controller('MainCtrl', function($scope) {
 		for (var i = 1; i <= selectedList.length; i++) {
 			$('#number' + i).html(i);
 			$('#case' + i).html(selectedList[i - 1]);
-			$('#status' + i).html('running');
+			$('#status').html('running');
 			$('#time' + i).html(time);
 			$('#check' + i).html('check');
 		}
@@ -83,10 +83,9 @@ app.controller('MainCtrl', function($scope) {
 		
 		$http.post('http://192.168.23.2:8888/api/v3/yardstick/tasks/task', postData).success(function(result) {
 			console.log(result['task_id'])
-			url = 'http://192.168.23.2:8888/api/v3/yardstick/testresults?task_id='+result['task_id']+'&measurement='+postData['args'];
-			// return taskId;
+			url = 'http://192.168.23.2:8888/api/v3/yardstick/testresults?task_id='+result['task_id']+'&measurement='+postData['args'][0];
 		}).error(function() {
-			// error info;
+			console.log('post error.');
 		});	
 		
 	};
@@ -101,17 +100,16 @@ app.controller('MainCtrl', function($scope) {
 			//update the status
 			$http.get(url).success(function(data)
 			{
-				
 				if(data['status']==1)
 				{
-					$('#status1').html('finished');
+					$('#status').html('finished');
 				}
 				else if(data['status']==2)
 				{
-					$('#status1').html('error');
+					$('#status').html('error');
 				}
 			}).error(function() {
-				alert('a $http request error occurred.');
+				console.log('a $http request error occurred.');
 			});
 		}
 	}, 20000);
@@ -122,13 +120,11 @@ app.controller('MainCtrl', function($scope) {
 		$('#output_nav').removeClass('todo').addClass('finished');
 		$scope.$emit("OutputShowChange", 1);
 
-		// tempval = $http.get(url);
-		// if(tempval['status'])
 		$http.get(url).success(function(data) {
 			$scope.jsonResult = data.result.results[0].series[0];
 			$scope.$emit("ResultChange", $scope.jsonResult);
 		}).error(function() {
-			alert('a $http request error occurred.');
+			console.log('a $http request error occurred.');
 		});
 	};
 
@@ -139,12 +135,5 @@ app.controller('MainCtrl', function($scope) {
 	$scope.$on("ResultChangeFromMain", function(event, msg) {
 		$scope.result = msg;
 	});
-
-	/*
-	for (var i = 0; i < $scope.result.values.length; i++) {
-		$scope.value = [];
-		$scope.value[i] = $scope.result.values[i];
-	}
-	*/
 
 });
