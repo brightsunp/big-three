@@ -84,6 +84,7 @@ app.controller('MainCtrl', function($scope) {
 		$http.post('http://192.168.23.2:8888/api/v3/yardstick/tasks/task', postData).success(function(result) {
 			console.log(result['task_id'])
 			url = 'http://192.168.23.2:8888/api/v3/yardstick/testresults?task_id='+result['task_id']+'&measurement='+postData['args'][0];
+			// global variable
 		}).error(function() {
 			console.log('post error.');
 		});	
